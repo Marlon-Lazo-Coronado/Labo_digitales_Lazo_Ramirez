@@ -1,0 +1,31 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /tmp/ccQvj87b.o
+LOAD /tmp/ccehdscL.o
+
+.memory         0x0000000000000000       0xfc
+                0x0000000000000000                . = 0x0
+ *(.init)
+ .init          0x0000000000000000       0x10 /tmp/ccQvj87b.o
+ *(.text)
+ .text          0x0000000000000010        0x0 /tmp/ccQvj87b.o
+ .text          0x0000000000000010       0xd8 /tmp/ccehdscL.o
+                0x0000000000000068                main
+ *(*)
+ .data          0x00000000000000e8        0x0 /tmp/ccQvj87b.o
+ .bss           0x00000000000000e8        0x0 /tmp/ccQvj87b.o
+ .data          0x00000000000000e8        0x0 /tmp/ccehdscL.o
+ .bss           0x00000000000000e8        0x0 /tmp/ccehdscL.o
+ .comment       0x00000000000000e8       0x11 /tmp/ccehdscL.o
+                                         0x12 (size before relaxing)
+                0x00000000000000fc                . = ALIGN (0x4)
+ *fill*         0x00000000000000f9        0x3 
+                0x00000000000000fc                end = .
+LOAD /opt/riscv32i/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a
+OUTPUT(firmware.elf elf32-littleriscv)
